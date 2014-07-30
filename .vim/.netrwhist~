@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/suzukiyousuke/Downloads/epubtest/META-INF'
+let g:netrw_dirhist_2='/Users/suzukiyousuke/Documents/totofighter/kay-framework/totoproject/iosapp'
+let g:netrw_dirhist_3='/Users/suzukiyousuke/Documents/spine.contacts/public'
+let g:netrw_dirhist_4='/Users/suzukiyousuke/Documents/dev/knowho/gae-go-starter/templates'

@@ -1,0 +1,1 @@
+/Users/suzukiyousuke/dotfiles/.vim
