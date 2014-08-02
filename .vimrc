@@ -85,13 +85,16 @@ NeoBundle 'msanders/snipmate.vim.git'
 NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'Blackrush/vim-gocode.git'
 
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'scrooloose/syntastic'
+
 " syntax + 自動compile
 NeoBundle 'kchmck/vim-coffee-script'
 " js BDDツール
 NeoBundle 'claco/jasmine.vim'
 " indentの深さに色を付ける
 NeoBundle 'nathanaelkane/vim-indent-guides'
-
 
 " vim-scripts repos
 NeoBundle 'L9'
@@ -131,3 +134,7 @@ syntax on
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 " インデントを設定
 autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
+
+let g:syntastic_javascript_checker = "jshint" "JavaScriptのSyntaxチェックはjshintで
+let g:syntastic_check_on_open = 0 "ファイルオープン時にはチェックをしない
+let g:syntastic_check_on_save = 1 "ファイル保存時にはチェックを実施

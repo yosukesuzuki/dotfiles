@@ -4,9 +4,12 @@ command-t
 jasmine.vim
 neobundle.vim
 neocomplcache
+nerdtree
 snipmate.vim
 sparkup
+syntastic
 unite.vim
+vim-autoclose
 vim-coffee-script
 vim-commentary
 vim-easymotion
