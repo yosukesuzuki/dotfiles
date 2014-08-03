@@ -5,11 +5,10 @@ jasmine.vim
 neobundle.vim
 neocomplcache
 nerdtree
-snipmate.vim
 sparkup
-syntastic
 unite.vim
 vim-autoclose
+vim-autoformat
 vim-coffee-script
 vim-commentary
 vim-easymotion

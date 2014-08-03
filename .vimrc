@@ -81,13 +81,11 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle "pangloss/vim-javascript"
-NeoBundle 'msanders/snipmate.vim.git'
 NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'Blackrush/vim-gocode.git'
 
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'scrooloose/syntastic'
 
 " syntax + 自動compile
 NeoBundle 'kchmck/vim-coffee-script'
@@ -101,6 +99,8 @@ NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
 " non github repos
 NeoBundle 'git://git.wincent.com/command-t.git'
+
+NeoBundle "Chiel92/vim-autoformat"
 " ...
 
 filetype plugin indent on     " required!
@@ -135,6 +135,3 @@ au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 " インデントを設定
 autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
 
-let g:syntastic_javascript_checker = "jshint" "JavaScriptのSyntaxチェックはjshintで
-let g:syntastic_check_on_open = 0 "ファイルオープン時にはチェックをしない
-let g:syntastic_check_on_save = 1 "ファイル保存時にはチェックを実施
