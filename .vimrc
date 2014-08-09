@@ -85,7 +85,6 @@ NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'Blackrush/vim-gocode.git'
 
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Townk/vim-autoclose'
 
 " syntax + 自動compile
 NeoBundle 'kchmck/vim-coffee-script'

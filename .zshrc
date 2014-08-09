@@ -54,8 +54,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export GOPATH="/Users/suzukiyousuke/go"
-export PATH="/Users/suzukiyousuke/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:#/usr/local/bin:/usr/local/go/bin:/opt/ImageMagick/bin:/Users/suzukiyousuke/.rvm/bin:/Users/suzukiyousuke/pebble-dev/PebbleSDK-current/bin:/Users/suzukiyousuke/go/bin:/Users/suzukiyousuke/go_appengine"
+export GOPATH="$HOME/go"
+export PATH="$HOME/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:#/usr/local/bin:/usr/local/go/bin:/opt/ImageMagick/bin:$HOME/.rvm/bin:$HOME/pebble-dev/PebbleSDK-current/bin:$HOME/go/bin:$HOME/go_appengine"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -80,9 +80,9 @@ setopt auto_cd
 setopt correct
 
 # The next line updates PATH for the Google Cloud SDK.
-source /Users/suzukiyousuke/google-cloud-sdk/path.zsh.inc
+source $HOME/google-cloud-sdk/path.zsh.inc
 # The next line enables bash completion for gcloud.
-source /Users/suzukiyousuke/google-cloud-sdk/completion.zsh.inc
+source $HOME/google-cloud-sdk/completion.zsh.inc
 
 function peco-select-history() {
     local tac
@@ -103,4 +103,4 @@ bindkey '^r' peco-select-history
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # added by travis gem
-[ -f /Users/suzukiyousuke/.travis/travis.sh ] && source /Users/suzukiyousuke/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
