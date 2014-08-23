@@ -2,12 +2,12 @@ FuzzyFinder
 L9
 command-t
 jasmine.vim
+js-beautify
 neobundle.vim
 neocomplcache
 nerdtree
 sparkup
 unite.vim
-vim-autoclose
 vim-autoformat
 vim-coffee-script
 vim-commentary
@@ -17,4 +17,5 @@ vim-gocode
 vim-golang
 vim-indent-guides
 vim-javascript
+vim-jsbeautify
 vim-rails
