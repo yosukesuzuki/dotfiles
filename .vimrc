@@ -21,9 +21,6 @@ let g:NeoComplCache_SmartCase = 1
 let g:NeoComplCache_EnableCamelCaseCompletion = 1
 let g:NeoComplCache_EnableUnderbarCompletion = 1
 
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
 "行頭のスペースの連続をハイライトさせる
 ""Tab文字も区別されずにハイライトされるので、区別したいときはTab文字の表示を別に
 "設定する必要がある。
@@ -51,9 +48,7 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 
 "gocode
-set rtp+=$GOROOT/misc/vim
-"golint
-exe "set rtp+=" . globpath($GOPATH, "src/github.com/golang/lint/misc/vim")
+"set rtp+=$GOROOT/misc/vim
 
 
 "set rtp+=~/.vim/bundle/vundle/
@@ -134,6 +129,19 @@ syntax on
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 " インデントを設定
 autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
+
+" vimにcoffeeファイルタイプを認識させる
+au BufRead,BufNewFile,BufReadPre *.html set filetype=html
+" インデントを設定
+autocmd FileType html setlocal sw=2 sts=2 ts=2 et
+
+map <c-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " 事前に pip install autopep8する
 " original http://stackoverflow.com/questions/12374200/using-uncrustify-with-vim/15513829#15513829
