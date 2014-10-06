@@ -135,14 +135,6 @@ au BufRead,BufNewFile,BufReadPre *.html set filetype=html
 " インデントを設定
 autocmd FileType html setlocal sw=2 sts=2 ts=2 et
 
-map <c-f> :call JsBeautify()<cr>
-" or
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-
 " 事前に pip install autopep8する
 " original http://stackoverflow.com/questions/12374200/using-uncrustify-with-vim/15513829#15513829
 function! Preserve(command)
@@ -171,3 +163,12 @@ endfunction
 
 " Shift + F で自動修正
 autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
+
+"map <c-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <S-f> :call JsBeautify()<cr>
+" for html
+autocmd FileType html noremap <S-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <S-f> :call CSSBeautify()<cr>
+
