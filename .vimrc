@@ -89,6 +89,8 @@ NeoBundle 'claco/jasmine.vim'
 " indentの深さに色を付ける
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
+
+
 " vim-scripts repos
 NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
@@ -96,6 +98,7 @@ NeoBundle 'FuzzyFinder'
 NeoBundle 'git://git.wincent.com/command-t.git'
 
 NeoBundle "Chiel92/vim-autoformat"
+
 " ...
 
 filetype plugin indent on     " required!
@@ -130,7 +133,7 @@ au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 " インデントを設定
 autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
 
-" vimにcoffeeファイルタイプを認識させる
+" vimにhtmlファイルタイプを認識させる
 au BufRead,BufNewFile,BufReadPre *.html set filetype=html
 " インデントを設定
 autocmd FileType html setlocal sw=2 sts=2 ts=2 et
