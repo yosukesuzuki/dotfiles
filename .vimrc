@@ -1,3 +1,5 @@
+" install mvim if you want to launch macvim by mvim command -> http://d.hatena.ne.jp/namutaka/20100419/1271694518
+
 sy on
 
 :colorscheme desert
@@ -175,3 +177,4 @@ autocmd FileType html noremap <S-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <S-f> :call CSSBeautify()<cr>
 
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
