@@ -69,6 +69,7 @@ if has('vim_starting')
     call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
@@ -178,3 +179,6 @@ autocmd FileType html noremap <S-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <S-f> :call CSSBeautify()<cr>
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+" install autopep8 pep8 pyflakes see -> http://ton-up.net/technote/2013/11/26/vim-python-style-check-and-fix/
+let g:syntastic_python_checkers = ['pyflakes', 'pep8']
