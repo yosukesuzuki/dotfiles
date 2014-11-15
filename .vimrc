@@ -18,10 +18,6 @@ set number
 set nocompatible
 set sw=4 " no of spaces for indenting
 "set ts=4 " show \t as 2 spaces and treat 2 spaces as \t when deleting, etc.
-let g:neocomplcache_enable_at_startup = 1
-let g:NeoComplCache_SmartCase = 1
-let g:NeoComplCache_EnableCamelCaseCompletion = 1
-let g:NeoComplCache_EnableUnderbarCompletion = 1
 
 "行頭のスペースの連続をハイライトさせる
 ""Tab文字も区別されずにハイライトされるので、区別したいときはTab文字の表示を別に
@@ -69,9 +65,11 @@ if has('vim_starting')
     call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
+" run git submodule update --init in .vim/bundle/jedi-vim -> http://qiita.com/tekkoc/items/923d7a7cf124e63adab5
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-commentary'
@@ -101,6 +99,43 @@ NeoBundle 'FuzzyFinder'
 NeoBundle 'git://git.wincent.com/command-t.git'
 
 NeoBundle "Chiel92/vim-autoformat"
+
+"------------------------------------
+" neocomplete.vim
+"------------------------------------
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  " return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+" Close popup by <Space>.
+inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
 
 " ...
 
@@ -182,3 +217,14 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 " install autopep8 pep8 pyflakes see -> http://ton-up.net/technote/2013/11/26/vim-python-style-check-and-fix/
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+
+" set neocomplete and jedi see -> http://kazy.hatenablog.com/entry/2013/07/18/131118
+autocmd FileType python setlocal omnifunc=jedi#completions
+
+let g:jedi#auto_vim_configuration = 0
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns = {}
+endif
+
+let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^. \t]\.\w*'

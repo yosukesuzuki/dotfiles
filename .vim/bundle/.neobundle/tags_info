@@ -2,9 +2,11 @@ FuzzyFinder
 L9
 command-t
 jasmine.vim
+jedi-vim
 js-beautify
 neobundle.vim
 neocomplcache
+neocomplete.vim
 nerdtree
 sparkup
 syntastic
