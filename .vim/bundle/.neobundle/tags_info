@@ -5,7 +5,6 @@ jasmine.vim
 jedi-vim
 js-beautify
 neobundle.vim
-neocomplcache
 neocomplete.vim
 nerdtree
 sparkup

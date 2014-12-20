@@ -78,9 +78,6 @@ export EDITOR='vim'
 setopt auto_cd
 
 setopt correct
-
-# The next line updates PATH for the Google Cloud SDK.
-source $HOME/google-cloud-sdk/path.zsh.inc
 # The next line enables bash completion for gcloud.
 source $HOME/google-cloud-sdk/completion.zsh.inc
 
@@ -108,3 +105,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 function gim() {
     mvim `git ls-files | peco`
 }
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/suzukiyosuke/google-cloud-sdk/path.bash.inc'
