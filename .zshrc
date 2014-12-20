@@ -7,10 +7,6 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -26,8 +22,8 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line to disable command auto-correction.
-# DISABLE_CORRECTION="true"
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -48,25 +44,26 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export GOPATH="$HOME/go"
-export PATH="$HOME/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:#/usr/local/bin:/usr/local/go/bin:/opt/ImageMagick/bin:$HOME/.rvm/bin:$HOME/pebble-dev/PebbleSDK-current/bin:$HOME/go/bin:$HOME/go_appengine"
+# export PATH="/Users/suzukiyosuke/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:#/usr/local/bin:/usr/local/go/bin:/opt/ImageMagick/bin:/Users/suzukiyosuke/.rvm/bin:/Users/suzukiyosuke/pebble-dev/PebbleSDK-current/bin:/Users/suzukiyosuke/go/bin:/Users/suzukiyosuke/go_appengine:/Users/suzukiyosuke/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+export PATH="/usr/local/bin:$PATH"
+
+source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-export LANG=ja_JP.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-export EDITOR='vim'
+#   export EDITOR='mvim'
 # fi
 
 # Compilation flags
@@ -75,11 +72,14 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-setopt auto_cd
-
-setopt correct
-# The next line enables bash completion for gcloud.
-source $HOME/google-cloud-sdk/completion.zsh.inc
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 function peco-select-history() {
     local tac
@@ -97,14 +97,17 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-function gim() {
-    mvim `git ls-files | peco`
-}
-
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/suzukiyosuke/google-cloud-sdk/path.bash.inc'
+source '/Users/suzukiyosuke/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables bash completion for gcloud.
+source '/Users/suzukiyosuke/google-cloud-sdk/completion.zsh.inc'
+
+# Golang setting
+# http://d.hatena.ne.jp/hiro_nemu/20140113/1389620004
+# for go lang
+if [ -x "`which go`" ]; then
+  export GOROOT=`go env GOROOT`
+  export GOPATH=$HOME/go
+  export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi

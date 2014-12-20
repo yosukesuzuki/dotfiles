@@ -62,7 +62,9 @@ filetype off                   " required!
 "
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
-    call neobundle#rc(expand('~/.vim/bundle/'))
+    call neobundle#begin(expand('~/.vim/bundle/'))
+    NeoBundleFetch 'Shougo/neobundle.vim'
+    call neobundle#end()
 endif
 
 " run git submodule update --init in .vim/bundle/jedi-vim -> http://qiita.com/tekkoc/items/923d7a7cf124e63adab5
