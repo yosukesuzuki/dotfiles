@@ -160,13 +160,16 @@ execute pathogen#infect()
 " go setttings
 filetype off
 filetype plugin indent off
-set runtimepath+=/usr/local/go/misc/vim
-au FileType go setlocal sw=4 ts=4 sts=4 noet
-au FileType go setlocal makeprg=go\ build\ ./... errorformat=%f:%l:\ %m
-au BufWritePre *.go Fmt
-au BufRead,BufNewFile *.md set filetype=markdown
+set runtimepath+=$GOROOT/misc/vim
+" au FileType go setlocal sw=4 ts=4 sts=4 noet
+" au FileType go setlocal makeprg=go\ build\ ./... errorformat=%f:%l:\ %m
+" au BufWritePre *.go Fmt
 filetype plugin indent on
 syntax on
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+exe "set rtp+=".globpath($GOPATH, "src/github.com/golang/lint/misc/vim")
+let g:syntastic_go_checkers = ['go', 'golint']
 
 " vimにcoffeeファイルタイプを認識させる
 au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
