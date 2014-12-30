@@ -67,9 +67,7 @@ if has('vim_starting')
     call neobundle#end()
 endif
 
-" run git submodule update --init in .vim/bundle/jedi-vim -> http://qiita.com/tekkoc/items/923d7a7cf124e63adab5
 NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
@@ -79,11 +77,13 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle "pangloss/vim-javascript"
-NeoBundle 'jnwhiteh/vim-golang.git'
+" NeoBundle 'jnwhiteh/vim-golang.git'
 NeoBundle 'Blackrush/vim-gocode.git'
 NeoBundle 'maksimr/vim-jsbeautify'
 NeoBundle 'einars/js-beautify'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 " syntax + 自動compile
 NeoBundle 'kchmck/vim-coffee-script'
@@ -92,7 +92,8 @@ NeoBundle 'claco/jasmine.vim'
 " indentの深さに色を付ける
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
-
+" auto pair
+NeoBundle 'jiangmiao/auto-pairs'
 
 " vim-scripts repos
 NeoBundle 'L9'
@@ -122,6 +123,24 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
 " ...
 
 filetype plugin indent on     " required!
@@ -143,7 +162,7 @@ execute pathogen#infect()
 " go setttings
 filetype off
 filetype plugin indent off
-set runtimepath+=$GOROOT/misc/vim
+set rtp+=$GOROOT/misc/vim
 " au FileType go setlocal sw=4 ts=4 sts=4 noet
 " au FileType go setlocal makeprg=go\ build\ ./... errorformat=%f:%l:\ %m
 " au BufWritePre *.go Fmt
@@ -208,10 +227,9 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 " install autopep8 pep8 pyflakes see -> http://ton-up.net/technote/2013/11/26/vim-python-style-check-and-fix/
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 
+set completeopt-=preview
+set completeopt+=longest
+" set omnifunc=syntaxcomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" set neocomplete and jedi see -> http://kazy.hatenablog.com/entry/2013/07/18/131118
-autocmd FileType python setlocal omnifunc=jedi#completions
-
-let g:jedi#auto_vim_configuration = 0

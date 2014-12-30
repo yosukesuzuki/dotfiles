@@ -1,11 +1,13 @@
 FuzzyFinder
 L9
+auto-pairs
 command-t
 jasmine.vim
-jedi-vim
 js-beautify
 neobundle.vim
 neocomplete.vim
+neosnippet
+neosnippet-snippets
 nerdtree
 sparkup
 syntastic
@@ -16,7 +18,6 @@ vim-commentary
 vim-easymotion
 vim-fugitive
 vim-gocode
-vim-golang
 vim-indent-guides
 vim-javascript
 vim-jsbeautify
