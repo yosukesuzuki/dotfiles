@@ -2,7 +2,6 @@
 
 sy on
 
-:colorscheme railscasts
 :filetype on
 :filetype indent on
 :filetype plugin on
@@ -112,6 +111,7 @@ NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
 
+:colorscheme railscasts
 "------------------------------------
 " neocomplete.vim
 "------------------------------------
