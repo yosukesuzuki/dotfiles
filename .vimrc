@@ -2,8 +2,7 @@
 
 sy on
 
-:colorscheme desert
-":colorscheme hybrid
+:colorscheme railscasts
 :filetype on
 :filetype indent on
 :filetype plugin on
@@ -100,8 +99,18 @@ NeoBundle 'L9'
 NeoBundle 'FuzzyFinder'
 " non github repos
 NeoBundle 'git://git.wincent.com/command-t.git'
-
 NeoBundle "Chiel92/vim-autoformat"
+
+" color schema
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/rdark'
 
 "------------------------------------
 " neocomplete.vim
